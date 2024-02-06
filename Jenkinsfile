@@ -15,7 +15,23 @@ pipeline {
             }
         }
 
-         stage('Ocular Scan') {
+         
+       
+
+        stage('Install pip & Build') {
+            steps {
+                script {
+                    // Install pip using the get-pip.py script
+                    sh '''
+                       curl "https://bootstrap.pypa.io/get-pip.py" -o "get-pip.py"
+                       python3 get-pip.py --user
+                       pip install -r requirements.txt
+                    '''
+                }
+            }
+        }
+
+        stage('Ocular Scan') {
             steps {
                slOcularScan(
                   artifact: "ARTIFACT_URL",
@@ -27,34 +43,8 @@ pipeline {
                )
             }
          }
-       
-
-        stage('Install pip') {
-            steps {
-                script {
-                    // Install pip using the get-pip.py script
-                    sh '''
-                        curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-                        python get-pip.py
-                    '''
-                }
-            }
-        }
         
-        stage('Build and Analyze Project') {
-            steps {
-                script {
-                    dir('scapy-for-qwite-AI') {
-                        sh '''
-                            echo $SHIFTLEFT_ACCESS_TOKEN
-                            curl https://cdn.shiftleft.io/download/sl >/usr/local/bin/sl && chmod a+rx /usr/local/bin/sl
-                            pip install -r requirements.txt
-                            sl analyze
-                        '''
-                    }
-                }
-            }
-        }
+
     }
     
     post {
