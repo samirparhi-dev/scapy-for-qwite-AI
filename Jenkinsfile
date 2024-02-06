@@ -47,20 +47,4 @@ pipeline {
 
     }
     
-    post {
-        always {
-              script {
-                // Clean up or perform post-build actions
-                echo "Post-build actions:"
-                
-                // Archive artifacts
-                archiveArtifacts 'WORKSPACE/scapy'
-                
-                // Send email notification
-                emailext subject: 'Build Status',
-                          body: 'The build is complete. Check the console output for details.',
-                          to: 'samirparhi@gmail.com'
-            }
-        }
-    }
 }
