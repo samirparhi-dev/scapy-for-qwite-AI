@@ -3,6 +3,7 @@ pipeline {
     
     environment {
         GIT_REPO_URL = 'https://github.com/samirparhi-dev/scapy-for-qwite-AI.git'
+        ARTIFACT_URL = 'https://github.com/samirparhi-dev/scapy-for-qwite-AI.git'
     }
     
     stages {
@@ -13,6 +14,20 @@ pipeline {
                 }
             }
         }
+
+         stage('Ocular Scan') {
+            steps {
+               slOcularScan(
+                  artifact: "ARTIFACT_URL",
+                  threadFix: false,
+                  debug: true,
+                  ocularArgs: "-J-Xmx4000m",
+                  orgId: "ORG_ID",
+                  accessToken: "SHIFTLEFT_ACCESS_TOKEN"
+               )
+            }
+         }
+       
 
         stage('Install pip') {
             steps {
