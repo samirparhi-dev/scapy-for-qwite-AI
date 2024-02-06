@@ -30,7 +30,7 @@ pipeline {
                        python3 get-pip.py --user
                        curl https://cdn.shiftleft.io/download/sl > $WORKSPACE/sl && chmod a+rx $WORKSPACE/sl
                        ls
-                       $WORKSPACE/sl analyze --app scapy --python $WORKSPACE
+                       $WORKSPACE/sl analyze --app scapy --pythonsrc $WORKSPACE
                     '''
                 }
             }
