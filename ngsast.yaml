@@ -1,0 +1,21 @@
+ngsast:
+  - app:
+      name: Qwite-AI-SCAPY-POC
+      language: PYTHON # change to your app's language
+      policy: io.shiftleft/helloshiftleft # change this policy name to the one you'd like to use for this app
+  - app:
+      name: helloshiftleft-js
+      language: JAVASCRIPT # change to your app's language
+      additional-findings:
+        - hsl-js-secrets
+  - default:
+      policy: io.shiftleft/defaultWithDict
+additional-findings:
+  hsl-js-secrets:
+    name: secrets
+    entropy: 0.5
+    include:
+      - "**/*.properties"
+      - src/**
+    exclude:
+      - src/test/**
