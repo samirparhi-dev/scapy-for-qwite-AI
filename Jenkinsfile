@@ -23,6 +23,8 @@ pipeline {
                     // Install pip using the get-pip.py script
                     sh '''
                        echo $WORKSPACE
+                       echo $SHIFTLEFT_DIAGNOSTIC
+                       echo $GIT_REPO_URL
                        curl "https://bootstrap.pypa.io/get-pip.py" -o "get-pip.py"
                        python3 get-pip.py --user
                        curl https://cdn.shiftleft.io/download/sl > $WORKSPACE/sl && chmod a+rx $WORKSPACE/sl
