@@ -24,7 +24,6 @@ pipeline {
                        curl "https://bootstrap.pypa.io/get-pip.py" -o "get-pip.py"
                        python3 get-pip.py --user
                        curl https://cdn.shiftleft.io/download/sl > $WORKSPACE/sl && chmod a+rx $WORKSPACE/sl
-                       source $WORKSPACE/sl
                        ls
                        ./run_scapy
                     '''
