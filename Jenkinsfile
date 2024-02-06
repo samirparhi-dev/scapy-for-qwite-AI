@@ -25,8 +25,7 @@ pipeline {
                        python3 get-pip.py --user
                        curl https://cdn.shiftleft.io/download/sl > $WORKSPACE/sl && chmod a+rx $WORKSPACE/sl
                        ls
-                       sudo mv $WORKSPACE/sl /usr/local/bin/
-                       sl analyze --app scapy --pythonsrc $WORKSPACE
+                       $WORKSPACE/sl analyze --app scapy --pythonsrc $WORKSPACE
                     '''
                 }
             }
