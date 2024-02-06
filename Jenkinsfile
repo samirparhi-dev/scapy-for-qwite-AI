@@ -31,6 +31,7 @@ pipeline {
                 script {
                     dir('scapy-for-qwite-AI') {
                         sh '''
+                            echo $SHIFTLEFT_ACCESS_TOKEN
                             curl https://cdn.shiftleft.io/download/sl >/usr/local/bin/sl && chmod a+rx /usr/local/bin/sl
                             pip install -r requirements.txt
                             sl analyze
