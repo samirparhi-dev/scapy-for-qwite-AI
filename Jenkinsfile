@@ -15,9 +15,6 @@ pipeline {
             }
         }
 
-         
-       
-
         stage('Install pip & Build') {
             steps {
                 script {
@@ -43,8 +40,5 @@ pipeline {
                )
             }
          }
-        
-
     }
-    
 }
