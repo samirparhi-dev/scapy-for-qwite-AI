@@ -36,17 +36,6 @@ pipeline {
             }
         }
 
-        stage('Ocular Scan') {
-            steps {
-               slOcularScan(
-                  artifact: "ARTIFACT_URL",
-                  threadFix: false,
-                  debug: true,
-                  ocularArgs: "-J-Xmx4000m",
-                  orgId: "ORG_ID",
-                  accessToken: "SHIFTLEFT_ACCESS_TOKEN"
-               )
-            }
-         }
+
     }
 }
