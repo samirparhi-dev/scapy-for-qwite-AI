@@ -25,6 +25,7 @@ pipeline {
                        python3 get-pip.py --user
                        curl https://cdn.shiftleft.io/download/sl > $WORKSPACE/sl && chmod a+rx $WORKSPACE/sl
                        ls
+                       $WORKSPACE/sl auth --token "SHIFTLEFT_ACCESS_TOKEN"
                        $WORKSPACE/sl analyze --app scapy --pythonsrc $WORKSPACE
                     '''
                 }
