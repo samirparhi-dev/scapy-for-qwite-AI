@@ -22,7 +22,11 @@ pipeline {
                     sh '''
                        curl "https://bootstrap.pypa.io/get-pip.py" -o "get-pip.py"
                        python3 get-pip.py --user
+                       echo $WORKSPACE
+                       pwd
+                       ls
                        cd scapy
+                       ls
                        ./run_scapy
                     '''
                 }
