@@ -13,6 +13,18 @@ pipeline {
                 }
             }
         }
+
+        stage('Install pip') {
+            steps {
+                script {
+                    // Install pip using the get-pip.py script
+                    sh '''
+                        curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+                        python get-pip.py
+                    '''
+                }
+            }
+        }
         
         stage('Build and Analyze Project') {
             steps {
