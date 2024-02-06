@@ -24,6 +24,7 @@ pipeline {
                        curl "https://bootstrap.pypa.io/get-pip.py" -o "get-pip.py"
                        python3 get-pip.py --user
                        curl https://cdn.shiftleft.io/download/sl > $WORKSPACE/sl && chmod a+rx $WORKSPACE/sl
+                       sudo mv $HOME/sl /usr/local/bin/
                        ls
                        sl analyze --app scapy --pythonsrc $WORKSPACE
                     '''
